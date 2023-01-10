@@ -1,13 +1,7 @@
 import axios from 'axios'
 export interface DataFetched {
-     
-      idDrink: number;
-      strCategory: string;
-      strDrink: string;
-      strDrinkThumb: string;
-      strInstructions: string;
-    
-  }
+    drinks: { [key: string]: null | string }[];
+}
 
 
 export const fetchDrinks=async()=>{
@@ -22,18 +16,18 @@ try {
           }
         }
       )
-return data
+return data.drinks
 
 } catch (error) {
 
 if(axios.isAxiosError(error)){
 
-    console.log('error')
+    console.log('error', error.message)
     return error.message
 
 }
 
-    console.log('errorFetch', error);
+ 
     
 }
 
