@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { fetchDrinks } from '../helpers/fetchDrinks';
+import React from 'react';
+import { Drink, Drinks } from '../interface/cocktailsData';
 import Cocktail from './Cocktail';
-import { DataFetched } from '../interface/cocktailsData';
+// interface cocktailsType {
+//   cocktails: { strDrink: string; strDrinkThumb: string };
+// }
 
-const Cocktails = () => {
-  const [cocktails, setCocktails] = useState<
-    DataFetched[] | string | undefined
-  >();
-
-  useEffect(() => {
-    fetchDrinks().then((res) => setCocktails(res));
-  }, []);
-  console.log('cocktails', cocktails);
+const Cocktails = ({ drinks }: Drinks) => {
+  console.log('drinks', drinks);
 
   return (
-    <div>
-      <Cocktail cocktails={cocktails} />
+    <div className="card-groupe mb-3">
+      {drinks?.map((c: Drink) => (
+        <Cocktail drink={c} />
+      ))}
     </div>
   );
 };

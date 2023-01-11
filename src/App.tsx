@@ -1,10 +1,10 @@
 import './App.css';
-import Cocktails from './components/Cocktails';
+import DataCocktails from './components/DataCocktails';
 
 function App() {
   return (
     <div className="App">
-      <Cocktails />
+      <DataCocktails />
     </div>
   );
 }
